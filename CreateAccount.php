@@ -6,7 +6,7 @@ $username = $_GET["Username"];
 $password = $_GET["Password"];
 
 $query =
-    "INSERT INTO utenti (Username, Password)
+    "INSERT INTO user (Username, Password)
     VALUES ('$username', '$password')
 ";
 

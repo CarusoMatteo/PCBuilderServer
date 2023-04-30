@@ -8,7 +8,7 @@ $password = $_GET["Password"];
 $query =
     "SELECT EXISTS 
     (SELECT * 
-    FROM utenti
+    FROM user
     WHERE Username = '$username' AND Password = '$password'
     ) AS ris
 ";
