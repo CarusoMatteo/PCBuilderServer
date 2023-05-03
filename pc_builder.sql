@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 30, 2023 alle 09:12
--- Versione del server: 10.4.27-MariaDB
--- Versione PHP: 8.2.0
+-- Creato il: Mag 03, 2023 alle 20:03
+-- Versione del server: 10.4.28-MariaDB
+-- Versione PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,7 +52,7 @@ CREATE TABLE `cpu` (
   `Series` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Price` decimal(65,2) NOT NULL,
-  `ImageURL` varchar(100) NOT NULL,
+  `ImageURL` varchar(100) DEFAULT NULL,
   `NumberOfCores` int(11) NOT NULL,
   `ClockSpeed` float NOT NULL COMMENT '[GHz]',
   `TDP` int(11) NOT NULL COMMENT '[W]',
@@ -61,6 +61,21 @@ CREATE TABLE `cpu` (
   `IntegratedGraphics` tinyint(1) NOT NULL,
   `CoolerIncluded` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `cpu`
+--
+
+INSERT INTO `cpu` (`IdCPU`, `Brand`, `Series`, `Name`, `Price`, `ImageURL`, `NumberOfCores`, `ClockSpeed`, `TDP`, `Architecture`, `Socket`, `IntegratedGraphics`, `CoolerIncluded`) VALUES
+(1, 'AMD', 'Ryzen 5', '5600X', 170.40, NULL, 6, 3.7, 65, 'Zen 3', 'AM4', 0, 1),
+(2, 'AMD', 'Ryzen 7', '5700X', 203.90, NULL, 8, 3.4, 65, 'Zen 3', 'AM4', 0, 0),
+(3, 'AMD', 'Ryzen 7', '5800X3D', 310.00, NULL, 8, 3.4, 105, 'Zen 3', 'AM4', 0, 0),
+(4, 'AMD', 'Ryzen 9', '5950X', 513.36, NULL, 16, 3.4, 105, 'Zen 3', 'AM4', 0, 0),
+(5, 'AMD', 'Ryzen 5', '7600X', 243.40, NULL, 6, 4.7, 105, 'Zen 4', 'AM5', 1, 0),
+(6, 'AMD', 'Ryzen 7', '7700X', 335.35, NULL, 8, 4.5, 105, 'Zen 4', 'AM5', 1, 0),
+(7, 'AMD', 'Ryzen 7', '7800X3D', 520.90, NULL, 8, 4.2, 120, 'Zen 4', 'AM5', 1, 0),
+(8, 'AMD', 'Ryzen 9', '7950X', 600.00, NULL, 16, 4.5, 170, 'Zen 4', 'AM5', 1, 0),
+(9, 'AMD', 'Ryzen 9', '7950X3D', 777.27, NULL, 16, 4.2, 120, 'Zen 4', 'AM5', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -196,8 +211,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Username`, `Password`, `Balance`, `CPU`, `Motherboard`, `RAM`, `GPU`, `Storage`, `PSU`) VALUES
-('Admin', 'admin', '0.00', NULL, NULL, NULL, NULL, NULL, NULL),
-('Matteo', 'P', '0.00', NULL, NULL, NULL, NULL, NULL, NULL);
+('Admin', 'admin', 0.00, NULL, NULL, NULL, NULL, NULL, NULL),
+('Matteo', 'P', 0.00, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -272,7 +287,7 @@ ALTER TABLE `commission`
 -- AUTO_INCREMENT per la tabella `cpu`
 --
 ALTER TABLE `cpu`
-  MODIFY `IdCPU` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdCPU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `gpu`
