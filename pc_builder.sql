@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 03, 2023 alle 20:03
+-- Creato il: Mag 04, 2023 alle 17:48
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -20,25 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pc_builder`
 --
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `commission`
---
-
-CREATE TABLE `commission` (
-  `IdOrder` int(11) NOT NULL,
-  `Date` date NOT NULL DEFAULT current_timestamp(),
-  `TotalCost` decimal(65,2) NOT NULL,
-  `User` varchar(100) NOT NULL,
-  `CPU` int(11) NOT NULL,
-  `Motherboard` int(11) NOT NULL,
-  `RAM` int(11) NOT NULL,
-  `GPU` int(11) NOT NULL,
-  `Storage` int(11) NOT NULL,
-  `PSU` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -75,7 +56,23 @@ INSERT INTO `cpu` (`IdCPU`, `Brand`, `Series`, `Name`, `Price`, `ImageURL`, `Num
 (6, 'AMD', 'Ryzen 7', '7700X', 335.35, NULL, 8, 4.5, 105, 'Zen 4', 'AM5', 1, 0),
 (7, 'AMD', 'Ryzen 7', '7800X3D', 520.90, NULL, 8, 4.2, 120, 'Zen 4', 'AM5', 1, 0),
 (8, 'AMD', 'Ryzen 9', '7950X', 600.00, NULL, 16, 4.5, 170, 'Zen 4', 'AM5', 1, 0),
-(9, 'AMD', 'Ryzen 9', '7950X3D', 777.27, NULL, 16, 4.2, 120, 'Zen 4', 'AM5', 1, 0);
+(9, 'AMD', 'Ryzen 9', '7950X3D', 777.27, NULL, 16, 4.2, 120, 'Zen 4', 'AM5', 1, 0),
+(10, 'Intel', 'Core i3', '12100F', 100.70, NULL, 4, 3.3, 58, 'Alder Lake', 'LGA1700', 0, 1),
+(11, 'Intel', 'Core i3', '12100', 148.99, NULL, 4, 3.3, 60, 'Alder Lake', 'LGA1700', 1, 1),
+(12, 'Intel', 'Core i5', '12600KF', 253.71, NULL, 10, 3.7, 125, 'Alder Lake', 'LGA1700', 0, 0),
+(13, 'Intel', 'Core i5', '12600K', 286.39, NULL, 10, 3.7, 125, 'Alder Lake', 'LGA1700', 1, 0),
+(14, 'Intel', 'Core i7', '12700KF', 329.68, NULL, 12, 3.6, 125, 'Alder Lake', 'LGA1700', 0, 0),
+(15, 'Intel', 'Core i7', '12700K', 360.79, NULL, 12, 3.6, 125, 'Alder Lake', 'LGA1700', 1, 0),
+(16, 'Intel', 'Core i9', '12900K', 475.58, NULL, 16, 3.2, 125, 'Alder Lake', 'LGA1700', 1, 0),
+(17, 'Intel', 'Core i9', '12900KS', 571.04, NULL, 16, 3.4, 150, 'Alder Lake', 'LGA1700', 1, 0),
+(18, 'Intel', 'Core i3', '13100F', 133.31, NULL, 4, 3.4, 58, 'Raptor Lake', 'LGA1700', 0, 1),
+(19, 'Intel', 'Core i3', '13100', 162.00, NULL, 4, 3.4, 60, 'Raptor Lake', 'LGA1700', 1, 1),
+(20, 'Intel', 'Core i5', '13600KF', 322.06, NULL, 14, 3.5, 125, 'Raptor Lake', 'LGA1700', 0, 0),
+(21, 'Intel', 'Core i5', '13600K', 341.88, NULL, 14, 3.5, 125, 'Raptor Lake', 'LGA1700', 1, 0),
+(22, 'Intel', 'Core i7', '13700KF', 415.96, NULL, 16, 3.4, 125, 'Raptor Lake', 'LGA1700', 0, 0),
+(23, 'Intel', 'Core i7', '13700K', 437.04, NULL, 16, 3.4, 125, 'Raptor Lake', 'LGA1700', 1, 0),
+(24, 'Intel', 'Core i9', '13900K', 599.49, NULL, 24, 3, 125, 'Raptor Lake', 'LGA1700', 1, 0),
+(25, 'Intel', 'Core i9', '13900KS', 981.27, NULL, 24, 3, 150, 'Raptor Lake', 'LGA1700', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -88,7 +85,7 @@ CREATE TABLE `gpu` (
   `Brand` int(11) NOT NULL,
   `Name` int(11) NOT NULL,
   `Price` int(11) NOT NULL,
-  `ImageURL` int(11) NOT NULL,
+  `ImageURL` int(11) DEFAULT NULL,
   `ChipsetBrand` int(11) NOT NULL,
   `Chipset` int(11) NOT NULL,
   `VRAMSize` int(11) NOT NULL COMMENT '[GB]',
@@ -111,7 +108,7 @@ CREATE TABLE `motherboard` (
   `Brand` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Price` decimal(65,2) NOT NULL,
-  `ImageURL` varchar(100) NOT NULL,
+  `ImageURL` varchar(100) DEFAULT NULL,
   `Socket` varchar(100) NOT NULL,
   `Chipset` varchar(100) NOT NULL,
   `FormFactor` varchar(100) NOT NULL,
@@ -134,6 +131,38 @@ CREATE TABLE `motherboard` (
   `USB_32_2` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `motherboard`
+--
+
+INSERT INTO `motherboard` (`IdMotherboard`, `Brand`, `Name`, `Price`, `ImageURL`, `Socket`, `Chipset`, `FormFactor`, `RAMType`, `NumberOfRAMSlots`, `MaxEthernetSpeed`, `WifiIncluded`, `BluetoothIncluded`, `PCIe_x16_5`, `PCIe_x16_4`, `PCIe_x8`, `PCIe_x4`, `PCIe_x1`, `M2_5`, `M2_4`, `NumberOfSATA`, `ESPConnectors`, `USB_2`, `USB_32_1`, `USB_32_2`) VALUES
+(1, 'ASUS', 'ROG STRIX B550-A GAMING', 146.75, NULL, 'AM4', 'B550', 'ATX', 'DDR4', 4, 2.5, 0, 0, 0, 2, 0, 0, 3, 0, 2, 3, 2, 2, 1, 0),
+(2, 'MSI ', 'MPG B650I EDGE WIFI', 260.49, NULL, 'AM5', 'B650', 'Mini ITX', 'DDR5', 2, 2.5, 1, 1, 0, 1, 0, 0, 0, 0, 2, 1, 2, 1, 1, 1),
+(3, 'MSI', 'MAG X570S TOMAHAWK MAX WIFI', 279.14, NULL, 'AM4', 'X570', 'ATX', 'DDR4', 4, 2.5, 1, 1, 0, 2, 0, 0, 2, 0, 2, 6, 2, 2, 2, 1),
+(4, 'MSI', 'PRO X670-P WIFI', 317.02, NULL, 'AM5', 'X670', 'ATX', 'DDR5', 4, 2.5, 1, 1, 0, 3, 0, 0, 1, 1, 3, 6, 2, 2, 2, 1),
+(5, 'ASUS', 'ROG STRIX X670E-E GAMING WIFI', 531.41, NULL, 'AM5', 'X670E', 'ATX', 'DDR5', 4, 2.5, 1, 1, 2, 1, 0, 0, 0, 3, 1, 4, 2, 3, 1, 1),
+(6, 'ASUS', 'PRIME Z690M-PLUS D4', 207.25, NULL, 'LGA1700', 'Z690', 'Micro ATX', 'DDR4', 4, 1, 0, 0, 0, 2, 0, 0, 2, 0, 3, 4, 2, 2, 1, 1),
+(7, 'MSI', 'MAG Z790 TOMAHAWK WIFI', 319.32, NULL, 'LGA1700', 'Z790', 'ATX', 'DDR5', 4, 2.5, 1, 1, 1, 1, 0, 0, 1, 0, 4, 7, 2, 2, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `orderhistory`
+--
+
+CREATE TABLE `orderhistory` (
+  `IdOrder` int(11) NOT NULL,
+  `Date` date NOT NULL DEFAULT current_timestamp(),
+  `TotalCost` decimal(65,2) NOT NULL,
+  `User` varchar(100) NOT NULL,
+  `CPU` int(11) NOT NULL,
+  `Motherboard` int(11) NOT NULL,
+  `RAM` int(11) NOT NULL,
+  `GPU` int(11) NOT NULL,
+  `Storage` int(11) NOT NULL,
+  `PSU` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -145,7 +174,7 @@ CREATE TABLE `psu` (
   `Brand` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Price` decimal(65,2) NOT NULL,
-  `ImageURL` varchar(100) NOT NULL,
+  `ImageURL` varchar(100) DEFAULT NULL,
   `Wattage` int(11) NOT NULL COMMENT '[W]',
   `FormFactor` varchar(100) NOT NULL COMMENT 'ATX, SFX',
   `Length` int(11) NOT NULL COMMENT '[mm]',
@@ -165,7 +194,7 @@ CREATE TABLE `ram` (
   `Brand` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Price` decimal(65,2) NOT NULL,
-  `ImageURL` varchar(100) NOT NULL,
+  `ImageURL` varchar(100) DEFAULT NULL,
   `RAMType` varchar(100) NOT NULL COMMENT 'DDR4, DDR5',
   `Speed` int(11) NOT NULL COMMENT '[MT/s]',
   `TotalSize` int(11) NOT NULL COMMENT '[GB]',
@@ -183,7 +212,7 @@ CREATE TABLE `storage` (
   `Brand` varchar(100) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Price` decimal(65,2) NOT NULL,
-  `ImageURL` varchar(100) NOT NULL,
+  `ImageURL` varchar(100) DEFAULT NULL,
   `Type` varchar(100) NOT NULL COMMENT 'NVMe M.2 5/4, SATA',
   `Size` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -212,18 +241,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`Username`, `Password`, `Balance`, `CPU`, `Motherboard`, `RAM`, `GPU`, `Storage`, `PSU`) VALUES
 ('Admin', 'admin', 0.00, NULL, NULL, NULL, NULL, NULL, NULL),
-('Matteo', 'P', 0.00, NULL, NULL, NULL, NULL, NULL, NULL);
+('Utente', 'u', 0.00, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
 --
-
---
--- Indici per le tabelle `commission`
---
-ALTER TABLE `commission`
-  ADD PRIMARY KEY (`IdOrder`),
-  ADD KEY `Commission_User` (`User`);
 
 --
 -- Indici per le tabelle `cpu`
@@ -242,6 +264,13 @@ ALTER TABLE `gpu`
 --
 ALTER TABLE `motherboard`
   ADD PRIMARY KEY (`IdMotherboard`);
+
+--
+-- Indici per le tabelle `orderhistory`
+--
+ALTER TABLE `orderhistory`
+  ADD PRIMARY KEY (`IdOrder`),
+  ADD KEY `Commission_User` (`User`);
 
 --
 -- Indici per le tabelle `psu`
@@ -278,16 +307,10 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT per la tabella `commission`
---
-ALTER TABLE `commission`
-  MODIFY `IdOrder` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `cpu`
 --
 ALTER TABLE `cpu`
-  MODIFY `IdCPU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `IdCPU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT per la tabella `gpu`
@@ -299,7 +322,13 @@ ALTER TABLE `gpu`
 -- AUTO_INCREMENT per la tabella `motherboard`
 --
 ALTER TABLE `motherboard`
-  MODIFY `IdMotherboard` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdMotherboard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT per la tabella `orderhistory`
+--
+ALTER TABLE `orderhistory`
+  MODIFY `IdOrder` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `psu`
@@ -324,9 +353,9 @@ ALTER TABLE `storage`
 --
 
 --
--- Limiti per la tabella `commission`
+-- Limiti per la tabella `orderhistory`
 --
-ALTER TABLE `commission`
+ALTER TABLE `orderhistory`
   ADD CONSTRAINT `Commission_User` FOREIGN KEY (`User`) REFERENCES `user` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
