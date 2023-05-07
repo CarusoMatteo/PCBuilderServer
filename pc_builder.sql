@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2023 alle 17:48
+-- Creato il: Mag 07, 2023 alle 13:14
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -125,7 +125,6 @@ CREATE TABLE `motherboard` (
   `M2_5` int(11) NOT NULL,
   `M2_4` int(11) NOT NULL,
   `NumberOfSATA` int(11) NOT NULL,
-  `ESPConnectors` int(11) NOT NULL,
   `USB_2` int(11) NOT NULL,
   `USB_32_1` int(11) NOT NULL,
   `USB_32_2` int(11) NOT NULL
@@ -135,14 +134,14 @@ CREATE TABLE `motherboard` (
 -- Dump dei dati per la tabella `motherboard`
 --
 
-INSERT INTO `motherboard` (`IdMotherboard`, `Brand`, `Name`, `Price`, `ImageURL`, `Socket`, `Chipset`, `FormFactor`, `RAMType`, `NumberOfRAMSlots`, `MaxEthernetSpeed`, `WifiIncluded`, `BluetoothIncluded`, `PCIe_x16_5`, `PCIe_x16_4`, `PCIe_x8`, `PCIe_x4`, `PCIe_x1`, `M2_5`, `M2_4`, `NumberOfSATA`, `ESPConnectors`, `USB_2`, `USB_32_1`, `USB_32_2`) VALUES
-(1, 'ASUS', 'ROG STRIX B550-A GAMING', 146.75, NULL, 'AM4', 'B550', 'ATX', 'DDR4', 4, 2.5, 0, 0, 0, 2, 0, 0, 3, 0, 2, 3, 2, 2, 1, 0),
-(2, 'MSI ', 'MPG B650I EDGE WIFI', 260.49, NULL, 'AM5', 'B650', 'Mini ITX', 'DDR5', 2, 2.5, 1, 1, 0, 1, 0, 0, 0, 0, 2, 1, 2, 1, 1, 1),
-(3, 'MSI', 'MAG X570S TOMAHAWK MAX WIFI', 279.14, NULL, 'AM4', 'X570', 'ATX', 'DDR4', 4, 2.5, 1, 1, 0, 2, 0, 0, 2, 0, 2, 6, 2, 2, 2, 1),
-(4, 'MSI', 'PRO X670-P WIFI', 317.02, NULL, 'AM5', 'X670', 'ATX', 'DDR5', 4, 2.5, 1, 1, 0, 3, 0, 0, 1, 1, 3, 6, 2, 2, 2, 1),
-(5, 'ASUS', 'ROG STRIX X670E-E GAMING WIFI', 531.41, NULL, 'AM5', 'X670E', 'ATX', 'DDR5', 4, 2.5, 1, 1, 2, 1, 0, 0, 0, 3, 1, 4, 2, 3, 1, 1),
-(6, 'ASUS', 'PRIME Z690M-PLUS D4', 207.25, NULL, 'LGA1700', 'Z690', 'Micro ATX', 'DDR4', 4, 1, 0, 0, 0, 2, 0, 0, 2, 0, 3, 4, 2, 2, 1, 1),
-(7, 'MSI', 'MAG Z790 TOMAHAWK WIFI', 319.32, NULL, 'LGA1700', 'Z790', 'ATX', 'DDR5', 4, 2.5, 1, 1, 1, 1, 0, 0, 1, 0, 4, 7, 2, 2, 1, 1);
+INSERT INTO `motherboard` (`IdMotherboard`, `Brand`, `Name`, `Price`, `ImageURL`, `Socket`, `Chipset`, `FormFactor`, `RAMType`, `NumberOfRAMSlots`, `MaxEthernetSpeed`, `WifiIncluded`, `BluetoothIncluded`, `PCIe_x16_5`, `PCIe_x16_4`, `PCIe_x8`, `PCIe_x4`, `PCIe_x1`, `M2_5`, `M2_4`, `NumberOfSATA`, `USB_2`, `USB_32_1`, `USB_32_2`) VALUES
+(1, 'Asus', 'ROG STRIX B550-A GAMING', 146.75, NULL, 'AM4', 'B550', 'ATX', 'DDR4', 4, 2.5, 0, 0, 0, 2, 0, 0, 3, 0, 2, 3, 2, 1, 0),
+(2, 'MSI ', 'MPG B650I EDGE WIFI', 260.49, NULL, 'AM5', 'B650', 'Mini ITX', 'DDR5', 2, 2.5, 1, 1, 0, 1, 0, 0, 0, 0, 2, 1, 1, 1, 1),
+(3, 'MSI', 'MAG X570S TOMAHAWK MAX WIFI', 279.14, NULL, 'AM4', 'X570', 'ATX', 'DDR4', 4, 2.5, 1, 1, 0, 2, 0, 0, 2, 0, 2, 6, 2, 2, 1),
+(4, 'MSI', 'PRO X670-P WIFI', 317.02, NULL, 'AM5', 'X670', 'ATX', 'DDR5', 4, 2.5, 1, 1, 0, 3, 0, 0, 1, 1, 3, 6, 2, 2, 1),
+(5, 'Asus', 'ROG STRIX X670E-E GAMING WIFI', 531.41, NULL, 'AM5', 'X670E', 'ATX', 'DDR5', 4, 2.5, 1, 1, 2, 1, 0, 0, 0, 3, 1, 4, 3, 1, 1),
+(6, 'Asus', 'PRIME Z690M-PLUS D4', 207.25, NULL, 'LGA1700', 'Z690', 'Micro ATX', 'DDR4', 4, 1, 0, 0, 0, 2, 0, 0, 2, 0, 3, 4, 2, 1, 1),
+(7, 'MSI', 'MAG Z790 TOMAHAWK WIFI', 319.32, NULL, 'LGA1700', 'Z790', 'ATX', 'DDR5', 4, 2.5, 1, 1, 1, 1, 0, 0, 1, 0, 4, 7, 2, 1, 1);
 
 -- --------------------------------------------------------
 

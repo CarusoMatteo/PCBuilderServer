@@ -1,10 +1,10 @@
 <?php
+#region
 
 $conn = require("SelectDatabase.php");
 
 $brandAMD = "";
 $brandIntel = "";
-
 
 if (isset($_GET["brandAMD"]))
     $brandAMD = "Brand = 'AMD'";
@@ -101,7 +101,9 @@ $integratedGraphicsArray = array(
     $integratedGraphicsNo
 );
 
-/*
+#endregion
+
+/* Every array is printed here
 print("Brand: ");
 print_r($brandArray);
 print("<br>Series: ");
@@ -124,7 +126,9 @@ $query .= checkArray($architectureArray);
 $query .= checkArray($socketArray);
 $query .= checkArray($integratedGraphicsArray);
 
-//print("<br>" . str_replace("\n", "<br>", $query) . "<br><br>");
+/* The query is printed here (the \n new line is replaced with html's <br>)
+print("<br>" . str_replace("\n", "<br>", $query) . "<br><br>");
+*/
 
 $cpus = mysqli_query($conn, $query);
 
@@ -157,10 +161,6 @@ if ($numrows > 0) {
     $result['Empty'] = true;
 }
 
-/*
-$all = mysqli_fetch_all(mysqli_query($conn, $query));
-//print_r($all);
-*/
 $json = json_encode($result);
 print($json);
 
