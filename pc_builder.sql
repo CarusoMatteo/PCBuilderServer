@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 07, 2023 alle 13:14
+-- Creato il: Mag 07, 2023 alle 16:43
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -91,9 +91,9 @@ CREATE TABLE `gpu` (
   `VRAMSize` int(11) NOT NULL COMMENT '[GB]',
   `ClockSpeed` int(11) NOT NULL COMMENT '[GHz]',
   `Length` int(11) NOT NULL COMMENT '[mm]',
-  `Height` int(11) NOT NULL COMMENT '[Slots]',
+  `Size` int(11) NOT NULL COMMENT '[Slots]',
   `TDP` int(11) NOT NULL,
-  `NumebrOfHDMI` int(11) NOT NULL,
+  `NumberOfHDMI` int(11) NOT NULL,
   `NumberOfDisplayPort` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -239,7 +239,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Username`, `Password`, `Balance`, `CPU`, `Motherboard`, `RAM`, `GPU`, `Storage`, `PSU`) VALUES
-('Admin', 'admin', 0.00, NULL, NULL, NULL, NULL, NULL, NULL),
+('Admin', 'admin', 0.00, 3, 1, NULL, NULL, NULL, NULL),
 ('Utente', 'u', 0.00, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
