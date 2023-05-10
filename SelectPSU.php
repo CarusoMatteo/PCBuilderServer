@@ -2,12 +2,12 @@
 
 $conn = require("SelectDatabase.php");
 
-$username = $_GET["Username"];
+$id = $_GET["Id"];
 
 $query =
     "SELECT *
-    FROM user
-    WHERE user.username = '$username'
+    FROM psu
+    WHERE psu.IdPSU = '$id'
 ";
 
 // print($query . "<br>");
