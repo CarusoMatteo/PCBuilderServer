@@ -90,7 +90,6 @@ $socketArray = array(
 $integratedGraphicsYes = "";
 $integratedGraphicsNo = "";
 
-
 if (isset($_GET["integratedGraphicsYes"]))
     $integratedGraphicsYes = "IntegratedGraphics = 1";
 if (isset($_GET["integratedGraphicsNo"]))
@@ -99,6 +98,19 @@ if (isset($_GET["integratedGraphicsNo"]))
 $integratedGraphicsArray = array(
     $integratedGraphicsYes,
     $integratedGraphicsNo
+);
+
+$coolerIncludedYes = "";
+$coolerIncludedNo = "";
+
+if (isset($_GET["coolerIncludedYes"]))
+    $coolerIncludedYes = "coolerIncluded = 1";
+if (isset($_GET["coolerIncludedNo"]))
+    $coolerIncludedNo = "coolerIncluded = 0";
+
+$coolerIncludedArray = array(
+    $coolerIncludedYes,
+    $coolerIncludedNo
 );
 
 #endregion
@@ -125,6 +137,7 @@ $query .= checkArray($seriesArray);
 $query .= checkArray($architectureArray);
 $query .= checkArray($socketArray);
 $query .= checkArray($integratedGraphicsArray);
+$query .= checkArray($coolerIncludedArray);
 
 /* The query is printed here (the \n new line is replaced with html's <br>)
 print("<br>" . str_replace("\n", "<br>", $query) . "<br><br>");
