@@ -1,7 +1,8 @@
 <?php
-#region
 
-$conn = require("SelectDatabase.php");
+$conn = require("../Database/SelectDatabase.php");
+
+#region
 
 $brandAMD = "";
 $brandIntel = "";

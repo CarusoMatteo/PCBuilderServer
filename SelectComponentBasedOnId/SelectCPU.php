@@ -1,13 +1,13 @@
 <?php
 
-$conn = require("SelectDatabase.php");
+$conn = require("../Database/SelectDatabase.php");
 
 $id = $_GET["Id"];
 
 $query =
     "SELECT *
-    FROM gpu
-    WHERE gpu.IdGPU = '$id'
+    FROM cpu
+    WHERE cpu.IdCPU = '$id'
 ";
 
 // print($query . "<br>");

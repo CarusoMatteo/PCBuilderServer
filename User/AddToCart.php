@@ -1,6 +1,6 @@
 <?php
 
-$conn = require("SelectDatabase.php");
+$conn = require("../Database/SelectDatabase.php");
 
 $username = $_GET["Username"];
 $componentType = $_GET["ComponentType"];

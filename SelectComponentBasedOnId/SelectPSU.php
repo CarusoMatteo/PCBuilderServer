@@ -1,13 +1,13 @@
 <?php
 
-$conn = require("SelectDatabase.php");
+$conn = require("../Database/SelectDatabase.php");
 
 $id = $_GET["Id"];
 
 $query =
     "SELECT *
-    FROM motherboard
-    WHERE motherboard.IdMotherboard = '$id'
+    FROM psu
+    WHERE psu.IdPSU = '$id'
 ";
 
 // print($query . "<br>");
