@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 11, 2023 alle 09:05
+-- Creato il: Mag 13, 2023 alle 11:47
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
@@ -82,20 +82,41 @@ INSERT INTO `cpu` (`IdCPU`, `Brand`, `Series`, `Name`, `Price`, `ImageURL`, `Num
 
 CREATE TABLE `gpu` (
   `IdGPU` int(11) NOT NULL,
-  `Brand` int(11) NOT NULL,
-  `Name` int(11) NOT NULL,
-  `Price` int(11) NOT NULL,
-  `ImageURL` int(11) DEFAULT NULL,
-  `ChipsetBrand` int(11) NOT NULL,
-  `Chipset` int(11) NOT NULL,
+  `Brand` varchar(100) NOT NULL,
+  `Name` varchar(100) NOT NULL,
+  `Price` decimal(65,2) NOT NULL,
+  `ImageURL` varchar(100) DEFAULT NULL,
+  `ChipsetBrand` varchar(100) NOT NULL,
+  `Chipset` varchar(100) NOT NULL,
   `VRAMSize` int(11) NOT NULL COMMENT '[GB]',
-  `ClockSpeed` int(11) NOT NULL COMMENT '[GHz]',
+  `ClockSpeed` float NOT NULL COMMENT '[GHz]',
   `Length` int(11) NOT NULL COMMENT '[mm]',
   `Size` int(11) NOT NULL COMMENT '[Slots]',
-  `TDP` int(11) NOT NULL,
+  `TDP` int(11) NOT NULL COMMENT '[W]',
   `NumberOfHDMI` int(11) NOT NULL,
   `NumberOfDisplayPort` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `gpu`
+--
+
+INSERT INTO `gpu` (`IdGPU`, `Brand`, `Name`, `Price`, `ImageURL`, `ChipsetBrand`, `Chipset`, `VRAMSize`, `ClockSpeed`, `Length`, `Size`, `TDP`, `NumberOfHDMI`, `NumberOfDisplayPort`) VALUES
+(1, 'Asus', 'TUF GAMING', '1379.99', 'GPU1.png', 'NVIDIA GeForce', 'RTX 4080', 16, 2.205, 348, 4, 320, 2, 3),
+(2, 'MSI', 'SUPRIM X', '2049.98', 'GPU2.png', 'NVIDIA GeForce', 'RTX 4090', 23, 2.234, 336, 4, 450, 3, 1),
+(3, 'Asus', 'ROG STRIX GAMING', '2193.44', 'GPU3.png', 'NVIDIA GeForce', 'RTX 4090', 24, 2.235, 358, 4, 450, 2, 3),
+(4, 'Gigabyte', 'GAMING', '1383.81', 'GPU4.png', 'NVIDIA GeForce', 'RTX 4080', 16, 2.205, 342, 4, 320, 1, 3),
+(5, 'MSI', 'GAMING X TRIO', '1365.72', 'GPU5.png', 'NVIDIA GeForce', 'RTX 4080', 16, 2.205, 337, 3, 320, 1, 3),
+(6, 'MSI', 'VENTUS 2X', '267.62', 'GPU6.png', 'NVIDIA GeForce', 'RTX 3050', 8, 1.15, 235, 2, 130, 1, 3),
+(7, 'Asus', 'STRIX GAMING', '2349.00', 'GPU7.png', 'NVIDIA GeForce', 'RTX 3090', 24, 1.395, 318, 3, 350, 2, 3),
+(8, 'Asus', 'DUAL', '362.05', 'GPU8.png', 'NVIDIA GeForce', 'RTX 3060', 8, 1.32, 200, 2, 170, 1, 3),
+(9, 'Gigabyte', 'GAMING', '2888.88', 'GPU9.png', 'NVIDIA GeForce', 'RTX 3080', 10, 1.44, 320, 3, 320, 2, 3),
+(10, 'MSI', 'GAMING Z TRIO', '1354.59', 'GPU10.png', 'AMD Radeon', 'RX 6800XT', 16, 1.825, 324, 3, 300, 3, 1),
+(11, 'Gigabyte', 'GAMING', '1124.45', 'GPU11.png', 'AMD Radeon', 'RX 7900 XTX', 24, 2.3, 331, 3, 335, 2, 2),
+(12, 'Gigabyte', 'EAGLE', '379.00', 'GPU12.png', 'AMD Radeon', 'RX 6600 XT', 8, 1.968, 282, 2, 160, 2, 2),
+(13, 'Gigabyte', 'AORUS MASTER', '972.50', 'GPU13.png', 'AMD Radeon', 'RX 6900 XT', 16, 1.825, 322, 3, 300, 2, 2),
+(14, 'Asus', 'TUF GAMING', '1024.14', 'GPU14.png', 'AMD Radeon', 'RX 7900 XT', 20, 2, 353, 4, 300, 1, 3),
+(15, 'Asus', 'DUAL', '166.57', 'GPU15.png', 'AMD Radeon', 'RX 6500 XT', 4, 2.31, 201, 2, 107, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -176,11 +197,23 @@ CREATE TABLE `psu` (
   `ImageURL` varchar(100) DEFAULT NULL,
   `Wattage` int(11) NOT NULL COMMENT '[W]',
   `FormFactor` varchar(100) NOT NULL COMMENT 'ATX, SFX',
-  `Length` int(11) NOT NULL COMMENT '[mm]',
-  `ESPConnectors` int(11) NOT NULL,
-  `PCIeConnectors` int(11) NOT NULL,
-  `SATAConnectors` int(11) NOT NULL
+  `Length` int(11) NOT NULL COMMENT '[mm]'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `psu`
+--
+
+INSERT INTO `psu` (`IdPSU`, `Brand`, `Name`, `Price`, `ImageURL`, `Wattage`, `FormFactor`, `Length`) VALUES
+(1, 'Corsair', 'RM550x', '119.99', 'PSU1.png', 550, 'ATX', 160),
+(2, 'Corsair', 'RM650x', '160.24', 'PSU2.png', 650, 'ATX', 160),
+(3, 'Corsair', 'RM750x', '139.22', 'PSU3.png', 750, 'ATX', 160),
+(4, 'Corsair', 'RM850x', '157.99', 'PSU4.png', 850, 'ATX', 160),
+(5, 'Corsair', 'RM1000x', '184.00', 'PSU5.png', 1000, 'ATX', 180),
+(6, 'SeaSonic', 'PRIME TX', '203.94', 'PSU6.png', 650, 'ATX', 170),
+(7, 'SeaSonic', 'PRIME TX', '291.98', 'PSU7.png', 750, 'ATX', 170),
+(8, 'SeaSonic', 'PRIME TX', '292.01', 'PSU8.png', 850, 'ATX', 170),
+(9, 'SeaSonic', 'PRIME TX', '459.00', 'PSU9.png', 1000, 'ATX', 170);
 
 -- --------------------------------------------------------
 
@@ -227,8 +260,23 @@ CREATE TABLE `storage` (
   `Price` decimal(65,2) NOT NULL,
   `ImageURL` varchar(100) DEFAULT NULL,
   `Type` varchar(100) NOT NULL COMMENT 'NVMe M.2 5/4, SATA',
-  `Size` int(11) NOT NULL
+  `Size` int(11) NOT NULL COMMENT 'GB'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `storage`
+--
+
+INSERT INTO `storage` (`IdStorage`, `Brand`, `Name`, `Price`, `ImageURL`, `Type`, `Size`) VALUES
+(1, 'Samsung', '980 Pro', '72.98', 'Storage1.png', 'NVMe M.2 4.0', 500),
+(2, 'Samsung', '980 Pro', '96.45', 'Storage2.png', 'NVMe M.2 4.0', 1000),
+(3, 'Samsung', '980 Pro', '154.90', 'Storage3.png', 'NVMe M.2 4.0', 2000),
+(4, 'Gigabyte', 'AORUS', '516.50', 'Storage4.png', 'NVMe M.2 5.0', 2000),
+(5, 'Corsair', 'MP700', '376.00', 'Storage5.png', 'NVMe M.2 5.0', 2000),
+(6, 'Samsung', '870 Evo', '36.99', 'Storage6.png', 'SATA', 250),
+(7, 'Samsung', '870 Evo', '45.90', 'Storage7.png', 'SATA', 500),
+(8, 'Samsung', '870 Evo', '76.38', 'Storage8.png', 'SATA', 1000),
+(9, 'Samsung', '870 Evo', '125.01', 'Storage9.png', 'SATA', 2000);
 
 -- --------------------------------------------------------
 
@@ -336,7 +384,7 @@ ALTER TABLE `cpu`
 -- AUTO_INCREMENT per la tabella `gpu`
 --
 ALTER TABLE `gpu`
-  MODIFY `IdGPU` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdGPU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT per la tabella `motherboard`
@@ -354,19 +402,19 @@ ALTER TABLE `orderhistory`
 -- AUTO_INCREMENT per la tabella `psu`
 --
 ALTER TABLE `psu`
-  MODIFY `IdPSU` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdPSU` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `ram`
 --
 ALTER TABLE `ram`
-  MODIFY `IdRAM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1217;
+  MODIFY `IdRAM` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1218;
 
 --
 -- AUTO_INCREMENT per la tabella `storage`
 --
 ALTER TABLE `storage`
-  MODIFY `IdStorage` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdStorage` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Limiti per le tabelle scaricate

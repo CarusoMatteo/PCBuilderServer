@@ -15,7 +15,7 @@ $query =
 try {
     $result = mysqli_fetch_assoc(mysqli_query($conn, $query));
 } catch (Exception $e) {
-    print($e);
+    //print($e);
     $result = array("Success" => false);
 }
 
