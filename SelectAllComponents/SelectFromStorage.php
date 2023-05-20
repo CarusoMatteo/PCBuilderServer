@@ -28,9 +28,9 @@ $typeSATA = "";
 if (isset($_GET["typeNVME4"]))
     $typeNVME4 = "Type = 'NVMe M.2 4.0'";
 if (isset($_GET["typeNVME5"]))
-    $typeNVME5 = "ChipsetBrand = 'NVMe M.2 5.0'";
+    $typeNVME5 = "Type = 'NVMe M.2 5.0'";
 if (isset($_GET["typeSATA"]))
-    $typeSATA = "ChipsetBrand = 'SATA'";
+    $typeSATA = "Type = 'SATA'";
 
 $typeArray = array(
     $typeNVME4,

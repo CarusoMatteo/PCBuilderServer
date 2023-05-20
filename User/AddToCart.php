@@ -54,11 +54,11 @@ print($json);
 
 // EXAMPLE:
 // AddToCart.php?Username="Admin"&ComponentType=0&ComponentID=null
-
+//
 // QUERY:
 // UPDATE user 
 // SET CPU = null 
 // WHERE Username = "Admin"
-
+//
 // RESULTING JSON:
 // {"UpdateSuccessful":true}

@@ -46,9 +46,9 @@ $formFactorATX = "";
 $formFactorSFF = "";
 
 if (isset($_GET["formFactorATX"]))
-    $formFactorATX = "FormFactor = ATX";
+    $formFactorATX = "FormFactor = 'ATX'";
 if (isset($_GET["formFactorSFF"]))
-    $formFactorSFF = "FormFactor = SFF";
+    $formFactorSFF = "FormFactor = 'SFF'";
 
 $formFactorArray = array(
     $formFactorATX,
@@ -71,10 +71,10 @@ $lengthArray = array(
     $length170,
     $length180,
 );
+
 #endregion
 
 $GLOBALS['firstFilterApplied'] = true;
-
 
 $query = "SELECT *\nFROM psu";
 $query .= checkArray($brandArray);

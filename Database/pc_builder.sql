@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 13, 2023 alle 11:47
+-- Creato il: Mag 18, 2023 alle 09:39
 -- Versione del server: 10.4.24-MariaDB
 -- Versione PHP: 8.1.6
 
@@ -111,7 +111,7 @@ INSERT INTO `gpu` (`IdGPU`, `Brand`, `Name`, `Price`, `ImageURL`, `ChipsetBrand`
 (7, 'Asus', 'STRIX GAMING', '2349.00', 'GPU7.png', 'NVIDIA GeForce', 'RTX 3090', 24, 1.395, 318, 3, 350, 2, 3),
 (8, 'Asus', 'DUAL', '362.05', 'GPU8.png', 'NVIDIA GeForce', 'RTX 3060', 8, 1.32, 200, 2, 170, 1, 3),
 (9, 'Gigabyte', 'GAMING', '2888.88', 'GPU9.png', 'NVIDIA GeForce', 'RTX 3080', 10, 1.44, 320, 3, 320, 2, 3),
-(10, 'MSI', 'GAMING Z TRIO', '1354.59', 'GPU10.png', 'AMD Radeon', 'RX 6800XT', 16, 1.825, 324, 3, 300, 3, 1),
+(10, 'MSI', 'GAMING Z TRIO', '1354.59', 'GPU10.png', 'AMD Radeon', 'RX 6800 XT', 16, 1.825, 324, 3, 300, 3, 1),
 (11, 'Gigabyte', 'GAMING', '1124.45', 'GPU11.png', 'AMD Radeon', 'RX 7900 XTX', 24, 2.3, 331, 3, 335, 2, 2),
 (12, 'Gigabyte', 'EAGLE', '379.00', 'GPU12.png', 'AMD Radeon', 'RX 6600 XT', 8, 1.968, 282, 2, 160, 2, 2),
 (13, 'Gigabyte', 'AORUS MASTER', '972.50', 'GPU13.png', 'AMD Radeon', 'RX 6900 XT', 16, 1.825, 322, 3, 300, 2, 2),
@@ -172,16 +172,39 @@ INSERT INTO `motherboard` (`IdMotherboard`, `Brand`, `Name`, `Price`, `ImageURL`
 
 CREATE TABLE `orderhistory` (
   `IdOrder` int(11) NOT NULL,
-  `Date` date NOT NULL DEFAULT current_timestamp(),
+  `Date` date NOT NULL DEFAULT current_timestamp() COMMENT 'Returned as:\r\nYYYY-MM-DD',
   `TotalCost` decimal(65,2) NOT NULL,
   `User` varchar(100) NOT NULL,
-  `CPU` int(11) NOT NULL,
-  `Motherboard` int(11) NOT NULL,
-  `RAM` int(11) NOT NULL,
-  `GPU` int(11) NOT NULL,
-  `Storage` int(11) NOT NULL,
-  `PSU` int(11) NOT NULL
+  `CPU` int(11) DEFAULT NULL,
+  `Motherboard` int(11) DEFAULT NULL,
+  `RAM` int(11) DEFAULT NULL,
+  `GPU` int(11) DEFAULT NULL,
+  `Storage` int(11) DEFAULT NULL,
+  `PSU` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dump dei dati per la tabella `orderhistory`
+--
+
+INSERT INTO `orderhistory` (`IdOrder`, `Date`, `TotalCost`, `User`, `CPU`, `Motherboard`, `RAM`, `GPU`, `Storage`, `PSU`) VALUES
+(2, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(3, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(5, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(6, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(7, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(8, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(9, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(10, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(11, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(12, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(13, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(14, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(15, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(16, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(17, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(18, '2023-05-18', '1.00', 'Admin', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -301,9 +324,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Username`, `Password`, `Balance`, `CPU`, `Motherboard`, `RAM`, `GPU`, `Storage`, `PSU`) VALUES
-('Admin', 'admin', '0.00', 23, 4, NULL, NULL, NULL, NULL),
-('Matteo', 'p', '0.00', 1, 7, NULL, NULL, NULL, NULL),
-('Utente', 'u', '0.00', NULL, NULL, NULL, NULL, NULL, NULL);
+('Admin', 'admin', '0.00', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -396,7 +417,7 @@ ALTER TABLE `motherboard`
 -- AUTO_INCREMENT per la tabella `orderhistory`
 --
 ALTER TABLE `orderhistory`
-  MODIFY `IdOrder` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IdOrder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT per la tabella `psu`
@@ -424,7 +445,7 @@ ALTER TABLE `storage`
 -- Limiti per la tabella `orderhistory`
 --
 ALTER TABLE `orderhistory`
-  ADD CONSTRAINT `Commission_User` FOREIGN KEY (`User`) REFERENCES `user` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Orderhistory_User` FOREIGN KEY (`User`) REFERENCES `user` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `user`

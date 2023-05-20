@@ -34,6 +34,59 @@ $chipsetBrandArray = array(
     $chipsetBrandAMD
 );
 
+$chipsetRTX3050 = "";
+$chipsetRTX3060 = "";
+$chipsetRTX3080 = "";
+$chipsetRTX3090 = "";
+$chipsetRTX4080 = "";
+$chipsetRTX4090 = "";
+$chipsetRX6500XT = "";
+$chipsetRX6600XT = "";
+$chipsetRX6800XT = "";
+$chipsetRX6900XT = "";
+$chipsetRX7900XT = "";
+$chipsetRX7900XTX = "";
+
+if (isset($_GET["chipsetRTX3050"]))
+    $chipsetRTX3050 = "Chipset = 'RTX 3050'";
+if (isset($_GET["chipsetRTX3060"]))
+    $chipsetRTX3060 = "Chipset = 'RTX 3060'";
+if (isset($_GET["chipsetRTX3080"]))
+    $chipsetRTX3080 = "Chipset = 'RTX 3080'";
+if (isset($_GET["chipsetRTX3090"]))
+    $chipsetRTX3090 = "Chipset = 'RTX 3090'";
+    if (isset($_GET["chipsetRTX4080"]))
+    $chipsetRTX4080 = "Chipset = 'RTX 4080'";
+if (isset($_GET["chipsetRTX4090"]))
+    $chipsetRTX4090 = "Chipset = 'RTX 4090'";
+if (isset($_GET["chipsetRX6500XT"]))
+    $chipsetRX6500XT = "Chipset = 'RX 6500 XT'";
+if (isset($_GET["chipsetRX6600XT"]))
+    $chipsetRX6600XT = "Chipset = 'RX 6600 XT'";
+if (isset($_GET["chipsetRX6800XT"]))
+    $chipsetRX6800XT = "Chipset = 'RX 6800 XT'";
+if (isset($_GET["chipsetRX6900XT"]))
+    $chipsetRX6900XT = "Chipset = 'RX 6900 XT'";
+    if (isset($_GET["chipsetRX7900XT"]))
+    $chipsetRX7900XT = "Chipset = 'RX 7900 XT'";
+if (isset($_GET["chipsetRX7900XTX"]))
+    $chipsetRX7900XTX = "Chipset = 'RX 7900 XTX'";
+
+$chipsetArray = array(
+    $chipsetRTX3050,
+    $chipsetRTX3060,
+    $chipsetRTX3080,
+    $chipsetRTX3090,
+    $chipsetRTX4080,
+    $chipsetRTX4090,
+    $chipsetRX6500XT,
+    $chipsetRX6600XT,
+    $chipsetRX6800XT,
+    $chipsetRX6900XT,
+    $chipsetRX7900XT,
+    $chipsetRX7900XTX
+);
+
 $VRAMSize4 = "";
 $VRAMSize8 = "";
 $VRAMSize10 = "";
@@ -106,6 +159,7 @@ $GLOBALS['firstFilterApplied'] = true;
 $query = "SELECT *\nFROM gpu";
 $query .= checkArray($brandArray);
 $query .= checkArray($chipsetBrandArray);
+$query .= checkArray($chipsetArray);
 $query .= checkArray($VRAMSizeArray);
 $query .= checkArray($numberoOfHDMIArray);
 $query .= checkArray($numberoOfDPArray);
