@@ -104,9 +104,9 @@ if (isset($_GET["VRAMSize4"]))
 if (isset($_GET["VRAMSize16"]))
     $VRAMSize16 = "VRAMSize = 16";
 if (isset($_GET["VRAMSize20"]))
-    $VRAMSize20 = "ChipsetBrand = 20";
+    $VRAMSize20 = "VRAMSize = 20";
 if (isset($_GET["VRAMSize24"]))
-    $VRAMSize24 = "ChipsetBrand = 24";
+    $VRAMSize24 = "VRAMSize = 24";
 
 $VRAMSizeArray = array(
     $VRAMSize4,
