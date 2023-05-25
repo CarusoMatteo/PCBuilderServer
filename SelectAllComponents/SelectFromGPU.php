@@ -55,7 +55,7 @@ if (isset($_GET["chipsetRTX3080"]))
     $chipsetRTX3080 = "Chipset = 'RTX 3080'";
 if (isset($_GET["chipsetRTX3090"]))
     $chipsetRTX3090 = "Chipset = 'RTX 3090'";
-    if (isset($_GET["chipsetRTX4080"]))
+if (isset($_GET["chipsetRTX4080"]))
     $chipsetRTX4080 = "Chipset = 'RTX 4080'";
 if (isset($_GET["chipsetRTX4090"]))
     $chipsetRTX4090 = "Chipset = 'RTX 4090'";
@@ -67,7 +67,7 @@ if (isset($_GET["chipsetRX6800XT"]))
     $chipsetRX6800XT = "Chipset = 'RX 6800 XT'";
 if (isset($_GET["chipsetRX6900XT"]))
     $chipsetRX6900XT = "Chipset = 'RX 6900 XT'";
-    if (isset($_GET["chipsetRX7900XT"]))
+if (isset($_GET["chipsetRX7900XT"]))
     $chipsetRX7900XT = "Chipset = 'RX 7900 XT'";
 if (isset($_GET["chipsetRX7900XTX"]))
     $chipsetRX7900XTX = "Chipset = 'RX 7900 XTX'";
@@ -164,9 +164,9 @@ $query .= checkArray($VRAMSizeArray);
 $query .= checkArray($numberoOfHDMIArray);
 $query .= checkArray($numberoOfDPArray);
 
-/* The query is printed here (the \n new line is replaced with html's <br>)
-print("<br>" . str_replace("\n", "<br>", $query) . "<br><br>");
-*/
+// The query is printed here (the \n new line is replaced with html's <br>)
+// print("<br>" . str_replace("\n", "<br>", $query) . "<br><br>");
+
 
 $cpus = mysqli_query($conn, $query);
 

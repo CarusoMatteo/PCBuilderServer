@@ -25,21 +25,55 @@ if (isset($_GET["IdStorage"]))
 if (isset($_GET["IdPSU"]))
     $idPSU = $_GET["IdPSU"];
 
-$query =
-    "INSERT INTO orderhistory (User, TotalCost, CPU, Motherboard, RAM, GPU, Storage, PSU)
-    VALUES ('$username', $totalPrice, $idCPU, $idMotherboard, $idRAM, $idGPU, $idStorage, $idPSU)
-";
+$query = "SELECT Balance
+    FROM user
+    WHERE Username = '$username'"
+;
+$balance = mysqli_fetch_assoc(mysqli_query($conn, $query))["Balance"];
 
-//print($query);
+$query = "INSERT INTO orderhistory (User, TotalCost, CPU, Motherboard, RAM, GPU, Storage, PSU)
+    VALUES ('$username', $totalPrice, $idCPU, $idMotherboard, $idRAM, $idGPU, $idStorage, $idPSU);\n\n";
 
-$result = array("CreateOrderSuccessful" => true);
+//print(str_replace("\n", "<br>", $query) . "<br>");
 
 try {
     mysqli_query($conn, $query);
 } catch (Exception $e) {
-    //print($e);
+    print($e);
     $result["CreateOrderSuccessful"] = false;
 }
+$result["CreateOrderSuccessful"] = true;
+
+$query = "UPDATE user
+    SET CPU = null,
+    Motherboard = null,
+    RAM = null,
+    GPU = null,
+    Storage = null,
+    PSU = null,
+    ";
+if ($balance < $totalPrice)
+    $query .= "Balance = 0
+    ";
+else {
+    $newBalance = $balance - $totalPrice;
+    $query .= "Balance = $newBalance
+    ";
+}
+$query .= "WHERE Username = '$username';\n
+";
+
+// print(str_replace("\n", "<br>", $query) . "<br>");
+
+try {
+    mysqli_query($conn, $query);
+} catch (Exception $e) {
+    print($e);
+    $result["UpdateUserSuccessful"] = false;
+}
+
+$result["UpdateUserSuccessful"] = true;
+
 
 mysqli_close($conn);
 
