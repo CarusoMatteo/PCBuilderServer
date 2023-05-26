@@ -2,12 +2,12 @@
 
 $conn = require("../Database/SelectDatabase.php");
 
-$id = $_GET["Id"];
+$username = $_GET["Username"];
 
 $query =
     "SELECT *
     FROM orderhistory
-    WHERE orderhistory.User = '$id'
+    WHERE orderhistory.User = '$username'
 ";
 
 // print($query . "<br>");
